@@ -1,7 +1,7 @@
 {
   "name": "@mike-north/typescript-courses",
   "version": "0.0.1",
-  "description": "Mike's TypeScript Courses",
+  "description": "This is clone from Mike's TypeScript Courses",
   "main": "index.js",
   "repository": "git@github.com:mike-north/typescript-courses.git",
   "author": "Mike North <michael.l.north@gmail.com>",
