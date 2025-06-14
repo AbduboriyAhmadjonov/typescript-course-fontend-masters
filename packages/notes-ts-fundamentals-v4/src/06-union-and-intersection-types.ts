@@ -7,41 +7,42 @@ const humidity = 79 //? Recall literal types
 //? A set of numbers from 1 to 5
 type OneThroughFive = 1 | 2 | 3 | 4 | 5
 let lowNumber: OneThroughFive = 3 //✔️ Valid
-// lowNumber = 8 //! 8 is not in the set
+lowNumber = 8 //! 8 is not in the set
 
 //? A set of even numbers from 1 to 9
 type Evens = 2 | 4 | 6 | 8
 let evenNumber: Evens = 2 //✔️ Valid
-// evenNumber = 5; //! 5 is not in the set
+evenNumber = 5 //! 5 is not in the set
 
-/*
 // //? A set of numbers from 1 to 5 OR a set of even numbers from 1 to 9
 // let evenOrLowNumber = 5 as Evens | OneThroughFive;
 
-/*
 // //? Control flow sometimes results in union types
-// function flipCoin() {
-//     if (Math.random() > 0.5) return "heads"
-//     return "tails"
-// }
+function flipCoin(): 'heads' | 'tails' {
+  if (Math.random() > 0.5) return 'heads'
+  return 'tails' as const
+}
 
-// const outcome = flipCoin()
-// //     ^? "heads" | "tails"
-// //? A more complicated example
+const outcome = flipCoin()
+//     ^? "heads" | "tails"
+//? A more complicated example
 
-// const success = ["success", { name: "Mike North", email: "mike@example.com" }] as const
-// const fail = ["error", new Error("Something went wrong!")] as const
+const success = [
+  'success',
+  { name: 'Mike North', email: 'mike@example.com' },
+] as const
 
-/*
-// function maybeGetUserInfo() {
-//     if (flipCoin() === "heads") {
-//         return success
-//     } else {
-//         return fail
-//     }
-// }
+const fail = ['error', new Error('Something went wrong!')] as const
 
-// const outcome2 = maybeGetUserInfo()
+function maybeGetUserInfo() {
+  if (flipCoin() === 'heads') {
+    return success
+  } else {
+    return fail
+  }
+}
+
+const outcome2 = maybeGetUserInfo()
 
 //* Working with union types
 /*
